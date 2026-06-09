@@ -12,12 +12,20 @@ JSON = Path().home() / "PyAppFiles" / "Organize Downloads" / "file_categories.js
 
 # Default category groups and their associated file extensions.
 DEFAULTS = {
-    "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".tiff", ".raw"],
-    "Documents": [".pdf", ".docx", ".doc", ".xlsx", ".xls", ".pptx", ".txt", ".csv", ".pages", ".numbers",],
-    "3D Printing & Design": [".stl", ".obj", ".3mf", ".step", ".stp", ".f3d", ".gcode"],
-    "Archives": [".zip", ".tar", ".gz", ".7z", ".rar", ".dmg"],
+    "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".tiff",
+               ".raw", ".heic", ".webp", ".heif", ".avif", ".psd", ".ai",
+               ".eps", ".hif"],
+    "Documents": [".pdf", ".docx", ".doc", ".xlsx", ".xls", ".pptx", ".txt",
+                  ".csv", ".pages", ".numbers",],
+    "3D Printing & Design": [".stl", ".obj", ".3mf", ".step", ".stp", ".f3d",
+                             ".gcode", ".gx"],
+    "Archives & Installers": [".zip", ".tar", ".gz", ".7z", ".rar", ".dmg",
+                              ".exe", ".msi", ".pkg"],
     "Scripts & Code": [".py", ".sh", ".zsh", ".json", ".xml", ".html", ".css"],
-    "Audio & Video": [".mp3", ".wav", ".mp4", ".mov", ".mkv", ".avi"],
+    "Audio & Video": [".mp3", ".wav", ".mp4", ".mov", ".mkv", ".avi", ".flac",
+                      ".aac", ".ogg", ".mpeg", ".mpg", ".m4a", ".m4b", ".m4v",
+                      ".hevc", ".h264", ".h265", ".av1"],
+    "Books": [".epub", ".mobi", ".azw3"],
     "Incomplete Downloads": [".crdownload", ".download", ".tmp"],
 }
 
