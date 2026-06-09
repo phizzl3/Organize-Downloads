@@ -18,7 +18,7 @@ DEFAULTS = {
     "Documents": [".pdf", ".docx", ".doc", ".xlsx", ".xls", ".pptx", ".txt",
                   ".csv", ".pages", ".numbers",],
     "3D Printing & Design": [".stl", ".obj", ".3mf", ".step", ".stp", ".f3d",
-                             ".gcode", ".gx"],
+                             ".gcode", ".gx", ".fpp"],
     "Archives & Installers": [".zip", ".tar", ".gz", ".7z", ".rar", ".dmg",
                               ".exe", ".msi", ".pkg"],
     "Scripts & Code": [".py", ".sh", ".zsh", ".json", ".xml", ".html", ".css"],
