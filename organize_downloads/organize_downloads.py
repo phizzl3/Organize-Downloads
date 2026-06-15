@@ -5,6 +5,9 @@ against the configured category rules, and moves files into the appropriate
 folder for easier organization.
 """
 
+__version__ = "1.0.1"
+"""Organize Downloads Package version number"""
+
 import shutil
 from pathlib import Path
 
