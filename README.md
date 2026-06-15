@@ -66,8 +66,7 @@ pip install -r requirements.txt
 From the project root, enter the application folder and run the script with Python:
 
 ```bash
-cd organize_downloads
-python organize_downloads.py
+python3 organize_downloads/organize_downloads.py
 ```
 
 The program will scan your Downloads directory and move matching files into category folders.
@@ -106,7 +105,7 @@ icon/files-and-folders.png
 If you prefer to build from inside the application folder instead, use the relative path to the same icon file:
 
 ```bash
-pyinstaller --onefile --name "Organize Downloads" --icon ../icon/files-and-folders.png organize_downloads.py
+pyinstaller --onefile --name "Organize Downloads" organize_downloads/organize_downloads.py
 ```
 
 ## Notes
