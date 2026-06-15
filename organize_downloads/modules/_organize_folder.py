@@ -1,16 +1,20 @@
-def organize_folder():
+import shutil
+# from pathlib import Path
+from modules import get_unique_path
+
+def organize_folder(downloads_dir, file_categories):
     """Scan the Downloads folder and move files into category directories."""
     # Confirm that the source directory exists before attempting to organize it.
-    if not DOWNLOADS_DIR.exists():
-        print(f"Error: Could not find the Downloads directory at {DOWNLOADS_DIR}")
+    if not downloads_dir.exists():
+        print(f"Error: Could not find the Downloads directory at {downloads_dir}")
         return
 
     # Announce the start of the organization process to the user.
-    print(f"Scanning: {DOWNLOADS_DIR}...")
+    print(f"Scanning: {downloads_dir}...")
     moved_count = 0
 
     # Iterate through every item in the Downloads folder.
-    for item in DOWNLOADS_DIR.iterdir():
+    for item in downloads_dir.iterdir():
         # Skip directories and hidden system files such as .DS_Store.
         if item.is_dir() or item.name.startswith('.'):
             continue
@@ -20,14 +24,14 @@ def organize_folder():
         
         # Determine the destination category for this file.
         destination_folder = None
-        for category, extensions in FILE_CATEGORIES.items():
+        for category, extensions in file_categories.items():
             if file_extension in extensions:
-                destination_folder = DOWNLOADS_DIR / category
+                destination_folder = downloads_dir / category
                 break
 
         # Fall back to an "Other" folder for unlisted file types.
         if not destination_folder:
-            destination_folder = DOWNLOADS_DIR / "Other"
+            destination_folder = downloads_dir / "Other"
 
         # Create the category folder if it does not exist yet.
         destination_folder.mkdir(exist_ok=True)

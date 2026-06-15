@@ -8,9 +8,9 @@ folder for easier organization.
 __version__ = "1.0.1"
 """Organize Downloads Package version number"""
 
-import shutil
-from pathlib import Path
-from modules import get_unique_path, organize_folder
+# import shutil
+# from pathlib import Path
+from modules import organize_folder
 from config import FILE_CATEGORIES, DOWNLOADS_DIR
 
 
@@ -77,5 +77,5 @@ from config import FILE_CATEGORIES, DOWNLOADS_DIR
 
 # Run the organization routine when the script is executed directly.
 if __name__ == "__main__":
-    organize_folder()
+    organize_folder(downloads_dir=DOWNLOADS_DIR, file_categories=FILE_CATEGORIES)
     
