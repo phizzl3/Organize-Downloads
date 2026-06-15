@@ -1,19 +1,27 @@
 """Configuration helpers for the Organize Downloads application.
 
-This module stores the default file-category mappings and the path to the
-user configuration file used to persist those categories between runs.
+This module defines default file category mappings, resolves the location of
+persistent JSON configuration files, loads saved user settings, and exposes the
+values required by the rest of the application.
+
+The configuration flow is:
+1. Ensure the application config directory exists under the user's home folder.
+2. Load or create `config.json` for runtime settings.
+3. Load or create `file_categories.json` for extension-category mappings.
+4. Determine the active downloads directory using the loaded settings.
 """
 
 from pathlib import Path
 from time import sleep
 from .loadconfig import load_config
 
-# Location of the JSON file that stores the user's custom file categories.
+# Location of the application's persistent support directory under the user home.
 _SUPPORT_DIR = Path().home() / "PyAppFiles" / "Organize Downloads"
 _CATEGORIES_JSON = _SUPPORT_DIR / "file_categories.json"
 _CONFIG_JSON = _SUPPORT_DIR / "config.json"
 
 
+# Default runtime configuration values used when no user config exists yet.
 _DEFAULT_CONFIG = {
     "comments": (
         "'default' means the app will use the system's default downloads folder.",
@@ -112,10 +120,13 @@ _DEFAULT_CATEGORIES = {
 }
 
 
+# Load the runtime configuration, creating config.json with defaults if needed.
 _CONFIG = load_config(json_path=_CONFIG_JSON, default_data=_DEFAULT_CONFIG)
 
+# Read the configured downloads folder location from the user config.
 _downloads_path = _CONFIG.get("downloads folder location", "default")
 
+# If the configured downloads path is invalid, fall back to the system default.
 if _downloads_path != "default" and not Path(_downloads_path).exists():
     print(
         f"Warning: The configured downloads folder path '{_downloads_path}' does not exist. Reverting to default."
@@ -124,16 +135,18 @@ if _downloads_path != "default" and not Path(_downloads_path).exists():
     sleep(5)
 
 
+# Resolve the active downloads folder path for the app to use.
 if _downloads_path != "default":
     DOWNLOADS_DIR = Path(_downloads_path)
 else:
     DOWNLOADS_DIR = Path.home() / "Downloads"
 
 
-# Load the saved category mapping from disk, falling back to the defaults if needed.
+# Load the saved category mapping from disk, using defaults when no file exists.
 FILE_CATEGORIES = load_config(
     json_path=_CATEGORIES_JSON, default_data=_DEFAULT_CATEGORIES
 )
 
+# Remove any documentation-only keys from the in-memory category mapping.
 if "comments" in FILE_CATEGORIES:
     del FILE_CATEGORIES["comments"]

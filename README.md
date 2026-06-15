@@ -1,14 +1,15 @@
 # Organize Downloads
 
-Organize Downloads is a small Python utility that scans your Downloads folder and sorts files into category-based folders such as Images, Documents, Archives, Audio & Video, Scripts & Code, and more. It is designed to save time by automating the repetitive work of moving downloaded files into sensible folders.
+Organize Downloads is a Python utility that scans your Downloads folder and sorts files into category-based folders such as Images, Documents, Archives, Audio and Video, Scripts and Code, and more. It automates the repetitive work of moving downloaded files into sensible folders.
 
 ## Overview
 
 The project currently consists of:
 
-- a main organizer script that scans the user’s Downloads directory
-- configuration logic that loads default category mappings and persists them in a JSON file
-- a simple packaging setup for creating a standalone desktop executable
+- a main package entry point that scans the user’s Downloads directory
+- configuration logic that loads default category mappings and persists them in user-level JSON files
+- helper modules that ensure files are moved safely without overwriting existing files
+- a packaging-friendly structure for creating a standalone desktop executable
 
 This tool is useful for anyone who wants a cleaner Downloads folder without manually sorting files every time.
 
@@ -31,9 +32,14 @@ Organize-Downloads/
 │   └── files-and-folders.png
 └── organize_downloads/
     ├── organize_downloads.py
-    └── config/
-        ├── configuration.py
-        └── loadconfig.py
+    ├── config/
+    │   ├── __init__.py
+    │   ├── configuration.py
+    │   └── loadconfig.py
+    └── modules/
+        ├── __init__.py
+        ├── _get_unique_path.py
+        └── _organize_folder.py
 ```
 
 ## How It Works
@@ -68,13 +74,16 @@ The program will scan your Downloads directory and move matching files into cate
 
 ## Configuration Behavior
 
-The application stores its file-category mapping in the user profile area under:
+The application stores its runtime settings and file-category mapping in the user profile area under:
 
 ```text
+~/PyAppFiles/Organize Downloads/config.json
 ~/PyAppFiles/Organize Downloads/file_categories.json
 ```
 
-If this file does not exist yet, the app creates it using the built-in default category definitions defined in the configuration module.
+If either file does not exist yet, the app creates it using the built-in default definitions from the configuration module.
+'config.json' allows for a user-customizable Downloads folder location.
+'file_categories.json' allows for user-customizable file sorting.
 
 ## Building a Standalone Executable
 

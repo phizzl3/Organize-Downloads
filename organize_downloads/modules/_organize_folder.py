@@ -1,6 +1,14 @@
+"""Download folder organization routines.
+
+This module contains the primary routine used by the application to scan the
+configured downloads directory, classify files by extension, and move them into
+named category folders. It relies on a helper to ensure files are not overwritten
+when duplicate names exist in the destination directory.
+"""
+
 import shutil
-# from pathlib import Path
 from modules import get_unique_path
+
 
 def organize_folder(downloads_dir, file_categories):
     """Scan the Downloads folder and move files into category directories."""
@@ -16,12 +24,12 @@ def organize_folder(downloads_dir, file_categories):
     # Iterate through every item in the Downloads folder.
     for item in downloads_dir.iterdir():
         # Skip directories and hidden system files such as .DS_Store.
-        if item.is_dir() or item.name.startswith('.'):
+        if item.is_dir() or item.name.startswith("."):
             continue
 
         # Normalize the file extension for category matching.
         file_extension = item.suffix.lower()
-        
+
         # Determine the destination category for this file.
         destination_folder = None
         for category, extensions in file_categories.items():
@@ -36,7 +44,7 @@ def organize_folder(downloads_dir, file_categories):
         # Create the category folder if it does not exist yet.
         destination_folder.mkdir(exist_ok=True)
 
-        # Move the file to its organized destination.
+        # Choose a collision-free path for this file before moving it.
         final_destination = get_unique_path(destination_folder, item)
         try:
             shutil.move(str(item), str(final_destination))
