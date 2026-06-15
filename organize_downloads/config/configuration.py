@@ -110,10 +110,11 @@ _CONFIG = load_config(json_path=_CONFIG_JSON, default_data=_DEFAULT_CONFIG)
 
 _downloads_path = _CONFIG.get("downloads folder location", "default")
 
-if not _downloads_path.exists():
+if _downloads_path != "default" and not Path(_downloads_path).exists():
     print(f"Warning: The configured downloads folder path '{_downloads_path}' does not exist. Reverting to default.")
     _downloads_path = "default"
     sleep(5)
+
 
 if _downloads_path != "default":
     DOWNLOADS_DIR = Path(_downloads_path)
