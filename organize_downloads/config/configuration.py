@@ -137,6 +137,3 @@ FILE_CATEGORIES = load_config(
 
 if "comments" in FILE_CATEGORIES:
     del FILE_CATEGORIES["comments"]
-
-
-print(FILE_CATEGORIES)
