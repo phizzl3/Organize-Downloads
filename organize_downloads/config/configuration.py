@@ -10,7 +10,7 @@ from .loadconfig import load_config
 
 # Location of the JSON file that stores the user's custom file categories.
 _SUPPORT_DIR = (
-    Path().home() / "PyAppFiles" / "Organize Downloads" / "file_categories.json"
+    Path().home() / "PyAppFiles" / "Organize Downloads"
 )
 _CATEGORIES_JSON = _SUPPORT_DIR / "file_categories.json"
 _CONFIG_JSON = _SUPPORT_DIR / "config.json"
