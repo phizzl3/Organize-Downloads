@@ -8,10 +8,12 @@ from pathlib import Path
 from .loadconfig import load_config
 
 # Location of the JSON file that stores the user's custom file categories.
-JSON = Path().home() / "PyAppFiles" / "Organize Downloads" / "file_categories.json"
+_SUPPORT_DIR = Path().home() / "PyAppFiles" / "Organize Downloads" / "file_categories.json"
+_CATEGORIES_JSON = _SUPPORT_DIR / "file_categories.json"
+_CONFIG_JSON = _SUPPORT_DIR / "config.json"
 
 # Default category groups and their associated file extensions.
-DEFAULTS = {
+_DEFAULT_CATEGORIES = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".tiff",
                ".raw", ".heic", ".webp", ".heif", ".avif", ".psd", ".ai",
                ".eps", ".hif"],
@@ -30,4 +32,4 @@ DEFAULTS = {
 }
 
 # Load the saved category mapping from disk, falling back to the defaults if needed.
-FILE_CATEGORIES = load_config(json_path=JSON, default_data=DEFAULTS)
+FILE_CATEGORIES = load_config(json_path=_CATEGORIES_JSON, default_data=_DEFAULT_CATEGORIES)
