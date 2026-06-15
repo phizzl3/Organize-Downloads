@@ -3,7 +3,7 @@ This module provides functionality to load and manage JSON configuration files.
 It includes functions to verify paths, write default data, and load data from JSON files.
 """
 
-__version__ = "1.2.1"
+__version__ = "1.2.1" # Edited README_CONTENT
 
 import json
 import time
@@ -14,8 +14,8 @@ from typing import Any, Optional
 README_CONTENT = """
 # Configuration Guide
 
-This folder contains the application's configuration file (`config.json`), 
-which is pre-populated with **default values** to help you get started quickly.
+This folder contains the application's configuration files (`config.json` & `file_categories.json`), 
+which are pre-populated with **default values** to help you get started quickly.
 
 ## Customizing Your Settings
 
