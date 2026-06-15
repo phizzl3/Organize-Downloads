@@ -56,5 +56,3 @@ def organize_folder(downloads_dir, file_categories):
     # Report the number of files successfully organized.
     print(f"\n✨ Done! Organized {moved_count} files successfully.")
 
-    # Pause so the user can review the summary before the console closes.
-    input("Press Enter to exit...")
