@@ -11,12 +11,14 @@ __version__ = "1.0.1"
 import shutil
 from pathlib import Path
 from modules import get_unique_path, organize_folder
+from config import FILE_CATEGORIES, DOWNLOADS_DIR
+
 
 # Import the configured file-category mapping from the config module.
-from config.configuration import FILE_CATEGORIES
+# from config.configuration import FILE_CATEGORIES
 
 # Path to the user's Downloads folder, which is the main source directory.
-DOWNLOADS_DIR = Path.home() / "Downloads"
+# DOWNLOADS_DIR = Path.home() / "Downloads"
 
 
 # get_unique_path(target_dir=Path("some_directory"), file_path=Path("some_file.txt"))
