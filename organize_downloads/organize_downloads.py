@@ -10,6 +10,7 @@ __version__ = "1.0.1"
 
 import shutil
 from pathlib import Path
+from modules import get_unique_path
 
 # Import the configured file-category mapping from the config module.
 from config.configuration import FILE_CATEGORIES
@@ -17,22 +18,24 @@ from config.configuration import FILE_CATEGORIES
 # Path to the user's Downloads folder, which is the main source directory.
 DOWNLOADS_DIR = Path.home() / "Downloads"
 
-def get_unique_path(target_dir, file_path):
-    """Generate a unique destination path for a file.
+# def get_unique_path(target_dir, file_path):
+#     """Generate a unique destination path for a file.
 
-    If a file with the same name already exists in the target folder,
-    this helper appends a numeric suffix to avoid overwriting existing files.
-    """
-    # Extract the base name and extension from the source file.
-    name = file_path.stem
-    suffix = file_path.suffix
-    counter = 1
-    new_path = target_dir / f"{name}{suffix}"
+#     If a file with the same name already exists in the target folder,
+#     this helper appends a numeric suffix to avoid overwriting existing files.
+#     """
+#     # Extract the base name and extension from the source file.
+#     name = file_path.stem
+#     suffix = file_path.suffix
+#     counter = 1
+#     new_path = target_dir / f"{name}{suffix}"
     
-    while new_path.exists():
-        new_path = target_dir / f"{name}_{counter}{suffix}"
-        counter += 1
-    return new_path
+#     while new_path.exists():
+#         new_path = target_dir / f"{name}_{counter}{suffix}"
+#         counter += 1
+#     return new_path
+
+get_unique_path(target_dir=Path("some_directory"), file_path=Path("some_file.txt"))
 
 def organize_folder():
     """Scan the Downloads folder and move files into category directories."""
