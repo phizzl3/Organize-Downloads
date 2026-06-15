@@ -27,6 +27,13 @@ _DEFAULT_CONFIG = {
 
 # Default category groups and their associated file extensions.
 _DEFAULT_CATEGORIES = {
+    "comments": ("This is the default file category mapping.",
+                 "You can customize it by adding or removing categories and file extensions.",
+                 "Each category is a folder name, and its list is a list of file extensions that belong to that category.",
+                 "Make sure to include the dot (.) before each file extension, and to use lowercase for consistency.",
+                 "For example, '.jpg' is the extension for JPEG image files, and it belongs in the 'Images' category.",
+                 "Feel free to modify the categories and extensions to suit your needs!",
+                 "Maintain the same format when editing to prevent errors when loading the configuration."),
     "Images": [
         ".jpg",
         ".jpeg",
@@ -57,7 +64,7 @@ _DEFAULT_CATEGORIES = {
         ".pages",
         ".numbers",
     ],
-    "3D Printing & Design": [
+    "3D Printing and Design": [
         ".stl",
         ".obj",
         ".3mf",
@@ -68,7 +75,7 @@ _DEFAULT_CATEGORIES = {
         ".gx",
         ".fpp",
     ],
-    "Archives & Installers": [
+    "Archives and Installers": [
         ".zip",
         ".tar",
         ".gz",
@@ -79,8 +86,8 @@ _DEFAULT_CATEGORIES = {
         ".msi",
         ".pkg",
     ],
-    "Scripts & Code": [".py", ".sh", ".zsh", ".json", ".xml", ".html", ".css"],
-    "Audio & Video": [
+    "Scripts and Code": [".py", ".sh", ".zsh", ".json", ".xml", ".html", ".css"],
+    "Audio and Video": [
         ".mp3",
         ".wav",
         ".mp4",
